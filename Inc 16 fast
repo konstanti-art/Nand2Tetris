@@ -1,0 +1,30 @@
+/**
+ * Fast 16-bit incrementer.
+ */
+
+CHIP Inc16Fast {
+    IN in[16];
+    OUT out[16];
+
+	PARTS:
+	// Inc8 for low 8 bit
+	Inc8(in=in[0..7], out=out[0..7], carryOut=carryLow);
+	// Inc8 for high 8 bit (8 bit + 1)
+	HalfAdder(a= in[8], b= true, sum= highPlusOne0, carry= carry1);
+    HalfAdder(a= in[9], b= carry1, sum= highPlusOne1, carry= carry2);
+    HalfAdder(a= in[10], b= carry2, sum= highPlusOne2, carry= carry3);
+    HalfAdder(a= in[11], b= carry3, sum= highPlusOne3, carry= carry4);
+    HalfAdder(a= in[12], b= carry4, sum= highPlusOne4, carry= carry5);
+    HalfAdder(a= in[13], b= carry5, sum= highPlusOne5, carry= carry6);
+    HalfAdder(a= in[14], b= carry6, sum= highPlusOne6, carry= carry7);
+	Xor(a = in[15], b = carry7, out = highPlusOne7);
+	// chose between Inc8 of high and in[8..15]
+	Mux(a=in[8], b=highPlusOne0, sel=carryLow, out=out[8]);
+	Mux(a=in[9], b=highPlusOne1, sel=carryLow, out=out[9]);
+	Mux(a=in[10], b=highPlusOne2, sel=carryLow, out=out[10]);
+	Mux(a=in[11], b=highPlusOne3, sel=carryLow, out=out[11]);
+	Mux(a=in[12], b=highPlusOne4, sel=carryLow, out=out[12]);
+	Mux(a=in[13], b=highPlusOne5, sel=carryLow, out=out[13]);
+	Mux(a=in[14], b=highPlusOne6, sel=carryLow, out=out[14]);
+	Mux(a=in[15], b=highPlusOne7, sel=carryLow, out=out[15]);
+}
