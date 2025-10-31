@@ -1,0 +1,55 @@
+CHIP Mux16 {
+    IN a[16], b[16], sel;
+    OUT out[16];
+
+    PARTS:
+    Not(in=sel, out=notSel);
+    Nand(a=a[0], b=notSel, out=nan11);
+    Nand(a=sel, b=b[0], out=nan21);
+    Nand(a=nan11, b=nan21, out=out[0]);
+    Nand(a=a[1], b=notSel, out=nan12);
+    Nand(a=sel, b=b[1], out=nan22);
+    Nand(a=nan12, b=nan22, out=out[1]);  
+    Nand(a=a[2], b=notSel, out=nan13);
+    Nand(a=sel, b=b[2], out=nan23);
+    Nand(a=nan13, b=nan23, out=out[2]);  
+    Nand(a=a[3], b=notSel, out=nan14);
+    Nand(a=sel, b=b[3], out=nan24);
+    Nand(a=nan14, b=nan24, out=out[3]);  
+    Nand(a=a[4], b=notSel, out=nan15);
+    Nand(a=sel, b=b[4], out=nan25);
+    Nand(a=nan15, b=nan25, out=out[4]);  
+    Nand(a=a[5], b=notSel, out=nan16);
+    Nand(a=sel, b=b[5], out=nan26);
+    Nand(a=nan16, b=nan26, out=out[5]);  
+    Nand(a=a[6], b=notSel, out=nan17);
+    Nand(a=sel, b=b[6], out=nan27);
+    Nand(a=nan17, b=nan27, out=out[6]);  
+    Nand(a=a[7], b=notSel, out=nan18);
+    Nand(a=sel, b=b[7], out=nan28);
+    Nand(a=nan18, b=nan28, out=out[7]);  
+    Nand(a=a[8], b=notSel, out=nan19);
+    Nand(a=sel, b=b[8], out=nan29);
+    Nand(a=nan19, b=nan29, out=out[8]);  
+    Nand(a=a[9], b=notSel, out=nan110);
+    Nand(a=sel, b=b[9], out=nan210);
+    Nand(a=nan110, b=nan210, out=out[9]);  
+    Nand(a=a[10], b=notSel, out=nan111);
+    Nand(a=sel, b=b[10], out=nan211);
+    Nand(a=nan111, b=nan211, out=out[10]);  
+    Nand(a=a[11], b=notSel, out=nan112);
+    Nand(a=sel, b=b[11], out=nan212);
+    Nand(a=nan112, b=nan212, out=out[11]);  
+    Nand(a=a[12], b=notSel, out=nan113);
+    Nand(a=sel, b=b[12], out=nan213);
+    Nand(a=nan113, b=nan213, out=out[12]);  
+    Nand(a=a[13], b=notSel, out=nan114);
+    Nand(a=sel, b=b[13], out=nan214);
+    Nand(a=nan114, b=nan214, out=out[13]);  
+    Nand(a=a[14], b=notSel, out=nan115);
+    Nand(a=sel, b=b[14], out=nan215);
+    Nand(a=nan115, b=nan215, out=out[14]);  
+    Nand(a=a[15], b=notSel, out=nan116);
+    Nand(a=sel, b=b[15], out=nan216);
+    Nand(a=nan116, b=nan216, out=out[15]);
+}
